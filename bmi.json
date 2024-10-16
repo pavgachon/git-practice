@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class BodyWeightCalculator {
+
+    public static double calculateBMI(double weight, double height) {
+        return weight / (height * height);
+    }
+
+    public static double calculateWeightDifference(double currentWeight, double targetWeight) {
+        return currentWeight - targetWeight;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter your current weight (kg): ");
+        double currentWeight = scanner.nextDouble();
+
+        System.out.print("Enter your height (m): ");
+        double height = scanner.nextDouble();
+
+        double bmi = calculateBMI(currentWeight, height);
+        System.out.printf("Your BMI is %.2f%n", bmi);
+
+        System.out.print("Enter your target weight (kg): ");
+        double targetWeight = scanner.nextDouble();
+
+        double weightDifference = calculateWeightDifference(currentWeight, targetWeight);
+        if (weightDifference > 0) {
+            System.out.printf("You need to lose %.2f kg to reach your target weight.%n", weightDifference);
+        } else if (weightDifference < 0) {
+            System.out.printf("You need to gain %.2f kg to reach your target weight.%n", -weightDifference);
+        } else {
+            System.out.println("You are already at your target weight!");
+        }
+
+        scanner.close();
+    }
+}
